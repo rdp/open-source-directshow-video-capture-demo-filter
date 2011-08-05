@@ -1,2 +1,9 @@
 simple demo "virtual camera" (fake camera) input.
 originally from http://tmhare.mvps.org/downloads.htm
+
+It also doesn't handle paused graphs well/right yet.
+in fillBuffer:
+    // If graph is inactive stop cueing samples
+    //if(!m_pParent->m_bActive || m_pParent->m_bEOF) 
+    //    return S_FALSE;
+
