@@ -80,15 +80,23 @@ HRESULT CVCamStream::FillBuffer(IMediaSample *pms)
 
     rtNow = m_rtLastTime;
     m_rtLastTime += avgFrameTime;
-    pms->SetTime(&rtNow, &m_rtLastTime);
-    pms->SetSyncPoint(TRUE);
 
+    
     BYTE *pData;
     long lDataLen;
     pms->GetPointer(&pData);
     lDataLen = pms->GetSize();
     for(int i = 0; i < lDataLen; ++i)
         pData[i] = rand();
+
+	// set PTS (presentation) timestamps...
+	CRefTime now;
+	m_pParent->StreamTime(now);
+	REFERENCE_TIME endThisFrame = now + avgFrameTime;
+    pms->SetTime((REFERENCE_TIME *) &now, &endThisFrame);
+    pms->SetSyncPoint(TRUE);
+    // not sure on this one...probably should be true only for our first packet
+	// pms->SetDiscontinuity(FALSE);
 
     return NOERROR;
 } // FillBuffer

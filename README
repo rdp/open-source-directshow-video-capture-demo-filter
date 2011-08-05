@@ -1,4 +1,4 @@
-simple demo "virtual camera" (static camera) input.
+simple demo "virtual camera" (fake camera) input.
 http://tmhare.mvps.org/downloads.htm
 
 NB that its call to SetTime on the samples is wrong. Ping me if you want it fixed (currently it stutters VLC...).
