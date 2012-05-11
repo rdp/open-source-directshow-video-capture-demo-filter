@@ -1,6 +1,10 @@
 simple demo "virtual camera" (fake camera) input.
 originally from http://tmhare.mvps.org/downloads.htm
 
+There is a "higher quality" dshow virtual inputter here:
+
+https://github.com/rdp/screen-capture-recorder-to-video-windows-free
+
 It also doesn't handle paused graphs well/right yet.
 in fillBuffer:
     // If graph is inactive stop cueing samples
